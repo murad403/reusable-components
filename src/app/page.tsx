@@ -56,6 +56,7 @@ const HomePage = () => {
         <Link href={'/form'}>Form</Link>
       <Link href={'/pdf-download'}>Pdf Download</Link>
       <Link href={'/pagination'}>Pagination</Link>
+      <Link href={'/drag-and-drop'}>Drog and Drop</Link>
       </div>
     </div>
   )
