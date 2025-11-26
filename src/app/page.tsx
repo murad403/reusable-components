@@ -52,7 +52,10 @@ const HomePage = () => {
         </div>
         <button type='submit' className='bg-green-300 rounded-sm px-5 py-2 text-white cursor-pointer'>Login</button>
       </form>
-      <Link href={'/form'}>Form</Link>
+      <div className='flex gap-5 *:text-green-600'>
+        <Link href={'/form'}>Form</Link>
+      <Link href={'/pdf-download'}>Pdf Download</Link>
+      </div>
     </div>
   )
 }
