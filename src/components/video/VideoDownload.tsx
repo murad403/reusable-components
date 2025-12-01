@@ -1,5 +1,4 @@
 "use client";
-
 import { useRef, useState } from "react";
 import { Play, Pause, Download } from "lucide-react";
 
@@ -29,12 +28,12 @@ const VideoDownload = () => {
     return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
   };
 
+  // time and duration====================================
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       setCurrentTime(formatTime(videoRef.current.currentTime));
     }
   };
-
   const handleLoadedMetadata = () => {
     if (videoRef.current) {
       setDuration(formatTime(videoRef.current.duration));
@@ -42,13 +41,20 @@ const VideoDownload = () => {
   };
 
   // ডাউনলোড ফাংশন
-  const handleDownload = () => {
-    const a = document.createElement("a");
-    a.href = videoUrl;
-    a.download = fileName; // ফাইলের নাম
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(videoUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = fileName;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("ডাউনলোড ফেইলড:", err);
+    }
   };
 
   return (
@@ -64,7 +70,7 @@ const VideoDownload = () => {
           onClick={togglePlayPause}
         />
 
-        {/* কাস্টম ওভারলে */}
+        {/* custome play puase button */}
         <div
           className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 rounded-2xl cursor-pointer hover:bg-black/40 transition"
           onClick={togglePlayPause}
