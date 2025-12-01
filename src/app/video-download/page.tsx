@@ -1,16 +1,12 @@
+import VideoDownload from '@/components/video/VideoDownload'
+import React from 'react'
 
-
-const VideoDownload = () => {
-    
-    return (
-        <div className='flex justify-center items-center min-h-screen'>
-            <div className='w-1/4'>
-                <video controls autoPlay muted={false} loop={false}  >
-                    
-                </video>
-            </div>
-        </div>
-    )
+const page = () => {
+  return (
+    <div>
+      <VideoDownload></VideoDownload>
+    </div>
+  )
 }
 
-export default VideoDownload
+export default page
