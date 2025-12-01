@@ -57,6 +57,7 @@ const HomePage = () => {
       <Link href={'/pdf-download'}>Pdf Download</Link>
       <Link href={'/pagination'}>Pagination</Link>
       <Link href={'/drag-and-drop'}>Drog and Drop</Link>
+      <Link href={'/video-download'}>Video Download</Link>
       </div>
     </div>
   )
